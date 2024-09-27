@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il mio progetto di tesi</title>
+    <style>
+        /* Stili di base per il layout */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        #map-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Posizionamento del bot flottante */
+        #bp-chat-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            width: 350px;
+            height: 500px;
+            max-width: 100%;
+            max-height: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        /* Stile per nascondere il bot prima dell'interazione */
+        #bp-chat-widget {
+            display: none;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Contenitore per la mappa Kumu -->
+    <div id="map-container">
+        <iframe src="https://embed.kumu.io/8b0e0a589e67b20d15b23d11139b1884" width="100%" height="100%" frameborder="0"></iframe>
+    </div>
+
+    <!-- Script per incorporare Botpress -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.1/inject.js"></script>
+    <script>
+        window.botpressWebChat.init({
+            host: "https://cdn.botpress.cloud/webchat/v2.1",
+            botId: "abff05c4-1642-42b3-81f5-85ea22bad748",
+            hideWidget: false, // Mostra il widget flottante
+            botName: "Il mio Bot",
+            locale: "it",
+            showPoweredBy: false,
+            enableReset: true,
+            enableTranscriptDownload: false,
+            customStyleSheet: `
+                #bp-chat-container {
+                    position: fixed !important;
+                    bottom: 20px;
+                    right: 20px;
+                    z-index: 9999;
+                    width: 350px;
+                    height: 500px;
+                    max-width: 100%;
+                    max-height: 100%;
+                    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                    border-radius: 10px;
+                }
+                #bp-chat-widget {
+                    display: block;
+                }
+            `,
+        });
+    </script>
+</body>
+</html>
